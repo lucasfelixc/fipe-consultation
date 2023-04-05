@@ -1,5 +1,5 @@
 const maskify = require('./1-maskify');
-const updateData = require('./2-update-data');
+const updateData = require('./2-updateData');
 const getRickAndMortyCharacters = require('./3-getRickAndMortyCharacters');
 const checkIfTheFirstLetterIsUppercase = require('./4-checkIfTheFirstLetterIsUppercase');
 
