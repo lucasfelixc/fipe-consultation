@@ -1,0 +1,36 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/fipe-project/node_modules
+/fipe-project/.pnp
+/fipe-project/.pnp.js
+
+# testing
+/fipe-project/coverage
+
+# next.js
+/fipe-project/.next/
+/fipe-project/out/
+
+# production
+/fipe-project/build
+
+# misc
+/fipe-project/.DS_Store
+/fipe-project/*.pem
+
+# debug
+/fipe-project/npm-debug.log*
+/fipe-project/yarn-debug.log*
+/fipe-project/yarn-error.log*
+/fipe-project/.pnpm-debug.log*
+
+# local env files
+/fipe-project/.env*.local
+
+# vercel
+/fipe-project/.vercel
+
+# typescript
+/fipe-project/*.tsbuildinfo
+/fipe-project/next-env.d.ts
