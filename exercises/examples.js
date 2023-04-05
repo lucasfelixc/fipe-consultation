@@ -1,12 +1,13 @@
 const maskify = require('./1-maskify');
 const updateData = require('./2-update-data');
 const getRickAndMortyCharacters = require('./3-getRickAndMortyCharacters');
+const checkIfTheFirstLetterIsUppercase = require('./4-checkIfTheFirstLetterIsUppercase');
 
 // Maskify test
-console.log(maskify('Texto teste'));
+console.log('--- 1 ---:', maskify('Texto teste'));
 
 // Update data test
-console.log(updateData({
+console.log('--- 2 ---:', updateData({
     name: 'name example 1',
     country: 'Brasil',
     age: 24,
@@ -21,4 +22,7 @@ console.log(updateData({
 ));
 
 // Rick and Morty request characters
-getRickAndMortyCharacters().then(data => console.log(data));
+getRickAndMortyCharacters().then(data => console.log('--- 3 ---:', data));
+
+// Checking if the first letter is capitalized
+console.log('--- 4 ---:', checkIfTheFirstLetterIsUppercase('Teste'))
