@@ -1,5 +1,6 @@
-const maskify = require('./maskify');
-const updateData = require('./update-data');
+const maskify = require('./1-maskify');
+const updateData = require('./2-update-data');
+const getRickAndMortyCharacters = require('./3-getRickAndMortyCharacters');
 
 // Maskify test
 console.log(maskify('Texto teste'));
@@ -18,3 +19,6 @@ console.log(updateData({
     mainTools: ['React', 'Next', 'TypeScript']
   }
 ));
+
+// Rick and Morty request characters
+getRickAndMortyCharacters().then(data => console.log(data));
