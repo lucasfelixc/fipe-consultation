@@ -1,0 +1,1 @@
+export { getBrandingList } from './getBrandingList';

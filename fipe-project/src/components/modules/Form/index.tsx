@@ -1,3 +1,5 @@
+import { useContext, useEffect } from 'react';
+import { FipeContext } from '@/context/FipeContext';
 import { TextFieldAutoComplete } from '@/components';
 
 import * as S from './styles';
@@ -11,9 +13,11 @@ const countries = [
 ];
 
 export const Form = () => {
+  const { brandingList } = useContext(FipeContext);
+
   return (
     <S.Container>
-      <TextFieldAutoComplete data={countries} label='Marca' />
+      <TextFieldAutoComplete data={brandingList} label='Marca' />
       <TextFieldAutoComplete data={countries} label='Modelo' />
       <TextFieldAutoComplete data={countries} label='Ano' />
       <S.SubmitButton variant='contained'>Consultar preço</S.SubmitButton>

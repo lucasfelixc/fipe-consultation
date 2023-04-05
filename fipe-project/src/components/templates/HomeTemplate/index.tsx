@@ -1,8 +1,20 @@
+import { useContext, useEffect } from 'react';
+import { FipeContext } from '@/context/FipeContext';
 import { Form } from '@/components';
 
 import * as S from './styles';
 
-export const HomeTemplate = () => {
+type Props = {
+  brandingList: FipeData[];
+};
+
+export const HomeTemplate = ({ brandingList }: Props) => {
+  const { setBrandingList } = useContext(FipeContext);
+
+  useEffect(() => {
+    setBrandingList(brandingList);
+  }, [brandingList]);
+
   return (
     <S.Container>
       <S.ContentTitles>
