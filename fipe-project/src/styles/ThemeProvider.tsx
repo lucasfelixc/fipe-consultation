@@ -1,6 +1,7 @@
 import { ThemeProvider as DefaultThemeProvider } from 'styled-components';
+import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import { GlobalStyles } from './global-styles';
-import { theme } from './theme';
+import { theme, muiTheme } from './theme';
 
 type Props = {
   children: React.ReactElement;
@@ -8,9 +9,11 @@ type Props = {
 
 export const ThemeProvider = ({ children }: Props) => {
   return (
-    <DefaultThemeProvider theme={theme}>
-      {children}
-      <GlobalStyles />
-    </DefaultThemeProvider>
+    <MUIThemeProvider theme={createTheme(muiTheme)}>
+      <DefaultThemeProvider theme={theme}>
+        {children}
+        <GlobalStyles />
+      </DefaultThemeProvider>
+    </MUIThemeProvider>
   );
 };

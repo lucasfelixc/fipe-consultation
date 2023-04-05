@@ -1,3 +1,5 @@
+import { createTheme } from '@mui/material/styles';
+
 export const theme = {
   colors: {
     white: '#FFFFFF',
@@ -48,3 +50,12 @@ export const theme = {
     huge: '10.5rem',
   },
 };
+
+export const muiTheme = createTheme({
+  palette: {
+    primary: {
+      main: theme.colors.primary,
+      light: theme.colors.backgroundPrimary,
+    },
+  },
+});

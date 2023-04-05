@@ -1,1 +1,1 @@
-export { default } from '@/templates/Home';
+export { default } from '@/containers/Home';
