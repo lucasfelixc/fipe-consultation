@@ -19,7 +19,7 @@ export const HomeTemplate = ({ brandingList }: Props) => {
     <S.Container>
       <S.ContentTitles>
         <h1>Tabela Fipe</h1>
-        <h3>Consule o valor de um veículo de forma gratuita</h3>
+        <h3>Consulte o valor de um veículo de forma gratuita</h3>
       </S.ContentTitles>
       <Form />
     </S.Container>

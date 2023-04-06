@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import { getBrandingList } from '@/services/branding';
+import { getBrandingList } from '@/services/vehicle';
 
 export const getServerSideProps: GetServerSideProps<{ [key: string]: unknown }> = async () => {
   const brandingData = await getBrandingList();
