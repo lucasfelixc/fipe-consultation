@@ -3,7 +3,7 @@ import { HomeTemplate } from '@/components';
 import * as S from './styles';
 
 type HomeProps = {
-  brandingList: FipeData[];
+  brandingList: VehicleData[];
   error?: boolean;
 };
 

@@ -2,7 +2,7 @@ import { api } from '@/services/api';
 import { AxiosError } from 'axios';
 
 type GetBrandingProps = {
-  data?: FipeData[];
+  data?: VehicleData[];
   status?: number;
   message?: string;
 };

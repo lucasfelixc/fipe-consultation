@@ -12,25 +12,27 @@ export const Form = () => {
     getValues,
     control,
     formState: { isDirty, isValid },
-  } = useForm<Inputs>({
-    defaultValues: {
-      branding: { codigo: '', nome: '' },
-    },
-  });
-  const { brandingList, modelList, yearsList, handleGetFipeData, loading } =
+  } = useForm<Inputs>();
+  const { brandingList, modelList, yearsList, handleGetVehicleData, loading, handleGetFipeData } =
     useContext(FipeContext);
 
   const handleBlurBrandingField = () => {
     const brandingFieldValue = getValues('branding');
 
     if (brandingFieldValue) {
-      handleGetFipeData(brandingFieldValue.codigo);
+      handleGetVehicleData(brandingFieldValue.codigo);
+    }
+  };
+
+  const onSubmit = (data: Inputs) => {
+    if (data) {
+      return handleGetFipeData(data.branding.codigo, data.model.codigo, data.year.codigo);
     }
   };
 
   return (
     <S.Container>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit((data) => onSubmit(data))}>
         <TextFieldAutoComplete
           control={control}
           rules={{ required: true }}

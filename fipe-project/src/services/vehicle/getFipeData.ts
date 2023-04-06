@@ -1,19 +1,23 @@
 import { api } from '@/services/api';
 import { AxiosError } from 'axios';
 
-type ModelParams = {
+type FipeParams = {
   brandingId: string;
+  modelId: string;
+  year: string;
 };
 
-type GetModelProps = {
-  data?: { anos: VehicleData[]; modelos: VehicleData[] };
+type GetFipeProps = {
+  data?: FipeData;
   status?: number;
   message?: string;
 };
 
-export const getModelList = async (params?: ModelParams): Promise<GetModelProps> => {
+export const getFipeData = async (params?: FipeParams): Promise<GetFipeProps> => {
   try {
-    const { data, status } = await api.get(`/carros/marcas/${params?.brandingId}/modelos`);
+    const { data, status } = await api.get(
+      `/carros/marcas/${params?.brandingId}/modelos/${params?.modelId}/anos/${params?.year}`,
+    );
 
     return {
       data,
