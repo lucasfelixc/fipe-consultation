@@ -47,7 +47,7 @@ export const TextFieldAutoComplete = ({
         render={({ field }) => (
           <Autocomplete
             {...field}
-            value={field.value}
+            value={field.value || null}
             onChange={(e, value) => field.onChange(value)}
             id='text-field-auto-complete'
             sx={{ width: '100%' }}

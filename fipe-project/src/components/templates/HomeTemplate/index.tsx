@@ -5,7 +5,7 @@ import { Form } from '@/components';
 import * as S from './styles';
 
 type Props = {
-  brandingList: FipeData[];
+  brandingList: VehicleData[];
 };
 
 export const HomeTemplate = ({ brandingList }: Props) => {
