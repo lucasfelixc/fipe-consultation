@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.section`
-  ${({ theme }) => css`
+type ContainerProps = {
+  success: boolean;
+};
+
+export const Container = styled.section<ContainerProps>`
+  ${({ theme, success }) => css`
     width: 100%;
     height: 100%;
 
@@ -10,7 +14,7 @@ export const Container = styled.section`
     align-items: center;
     gap: 3rem;
 
-    background-color: ${theme.colors.backgroundPrimary};
+    background-color: ${success ? theme.colors.backgroundSuccess : theme.colors.backgroundPrimary};
 
     padding: ${theme.spacings.medium} ${theme.spacings.small};
 

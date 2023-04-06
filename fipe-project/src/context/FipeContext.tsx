@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { getModelList, getFipeData } from '@/services/vehicle';
+import { Toast } from '@/utils/toasts';
 
 interface FipeContextData {
   brandingList: VehicleData[];
@@ -10,6 +11,8 @@ interface FipeContextData {
   handleGetFipeData: (brandingId: string, modelId: string, year: string) => void;
   loading: boolean;
   fipeData: FipeData | null;
+  handleClearFipeData: () => void;
+  handleClearVehicleData: () => void;
 }
 
 type FipeProviderProps = {
@@ -42,7 +45,16 @@ export function FipeProvider({ children }: FipeProviderProps) {
 
     if (fipeData.status === 200 && fipeData.data) {
       setFipeData(fipeData.data);
+    } else {
+      Toast('Houve algum problema na busca dos dados, tente novamente.', 'error');
     }
+  };
+
+  const handleClearFipeData = () => setFipeData(null);
+
+  const handleClearVehicleData = () => {
+    setModelList([]);
+    setYearsList([]);
   };
 
   return (
@@ -56,6 +68,8 @@ export function FipeProvider({ children }: FipeProviderProps) {
         handleGetFipeData,
         loading,
         fipeData,
+        handleClearFipeData,
+        handleClearVehicleData,
       }}
     >
       {children}

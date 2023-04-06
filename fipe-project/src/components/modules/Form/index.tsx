@@ -12,11 +12,23 @@ export const Form = () => {
     getValues,
     control,
     formState: { isDirty, isValid },
+    resetField,
   } = useForm<Inputs>();
-  const { brandingList, modelList, yearsList, handleGetVehicleData, loading, handleGetFipeData } =
-    useContext(FipeContext);
+  const {
+    brandingList,
+    modelList,
+    yearsList,
+    handleGetVehicleData,
+    loading,
+    handleGetFipeData,
+    handleClearVehicleData,
+  } = useContext(FipeContext);
 
   const handleBlurBrandingField = () => {
+    resetField('model');
+    resetField('year');
+    handleClearVehicleData();
+
     const brandingFieldValue = getValues('branding');
 
     if (brandingFieldValue) {
