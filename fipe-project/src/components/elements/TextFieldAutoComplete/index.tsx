@@ -70,12 +70,6 @@ export const TextFieldAutoComplete = ({
                 label={label}
                 inputProps={{
                   ...params.inputProps,
-                  endAdornment: (
-                    <>
-                      {loading ? <CircularProgress color='inherit' size={20} /> : null}
-                      {params.InputProps.endAdornment}
-                    </>
-                  ),
                 }}
               />
             )}
