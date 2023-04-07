@@ -1,6 +1,6 @@
 import { RenderResult } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import { ImageProvider } from '@/context/ImageContext';
+import { FipeProvider } from '@/context/FipeContext';
 
 import { theme } from '@/styles/theme';
 
@@ -9,7 +9,7 @@ export const WrapperTheme = (
   children: React.ReactElement,
 ) =>
   fn(
-    <ImageProvider>
+    <FipeProvider>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </ImageProvider>,
+    </FipeProvider>,
   );
