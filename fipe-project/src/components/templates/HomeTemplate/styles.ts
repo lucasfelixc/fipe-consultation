@@ -32,4 +32,11 @@ export const ContentTitles = styled.div`
   text-align: center;
 
   gap: 1rem;
+
+  ${({ theme }) => css`
+    > h1,
+    > h3 {
+      color: ${theme.colors.grayScale03};
+    }
+  `}
 `;
