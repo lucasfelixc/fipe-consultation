@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { getModelList, getFipeData } from '@/services/vehicle';
+import { getModelList, getFipeData, getYearList } from '@/services/vehicle';
 import { Toast } from '@/utils/toasts';
 
 interface FipeContextData {
@@ -7,13 +7,15 @@ interface FipeContextData {
   setBrandingList: React.Dispatch<React.SetStateAction<VehicleData[]>>;
   modelList: VehicleData[];
   yearsList: VehicleData[];
-  handleGetVehicleData: (brandingId: string) => void;
+  handleGetModelData: (brandingId: string) => void;
+  handleGetYearData: (brandingId: string, modelId: string) => void;
   handleGetFipeData: (brandingId: string, modelId: string, year: string) => void;
   loading: boolean;
   loadingFipeData: boolean;
   fipeData: FipeData | null;
   handleClearFipeData: () => void;
   handleClearVehicleData: () => void;
+  handleClearYearData: () => void;
 }
 
 type FipeProviderProps = {
@@ -30,13 +32,23 @@ export function FipeProvider({ children }: FipeProviderProps) {
   const [loading, setLoading] = useState(false);
   const [loadingFipeData, setLoadingFipeData] = useState(false);
 
-  const handleGetVehicleData = async (brandingId: string) => {
+  const handleGetModelData = async (brandingId: string) => {
     setLoading(true);
     const modelData = await getModelList({ brandingId: brandingId });
 
     if (modelData.status === 200 && modelData.data) {
       !!modelData.data.modelos.length && setModelList(modelData.data.modelos);
-      !!modelData.data.anos.length && setYearsList(modelData.data.anos);
+    }
+
+    setLoading(false);
+  };
+
+  const handleGetYearData = async (brandingId: string, modelId: string) => {
+    setLoading(true);
+    const yearData = await getYearList({ brandingId, modelId });
+
+    if (yearData.status === 200 && yearData.data) {
+      setYearsList(yearData.data);
     }
 
     setLoading(false);
@@ -61,6 +73,8 @@ export function FipeProvider({ children }: FipeProviderProps) {
     setYearsList([]);
   };
 
+  const handleClearYearData = () => setYearsList([]);
+
   return (
     <FipeContext.Provider
       value={{
@@ -68,13 +82,15 @@ export function FipeProvider({ children }: FipeProviderProps) {
         setBrandingList,
         modelList,
         yearsList,
-        handleGetVehicleData,
+        handleGetModelData,
         handleGetFipeData,
+        handleGetYearData,
         loading,
         loadingFipeData,
         fipeData,
         handleClearFipeData,
         handleClearVehicleData,
+        handleClearYearData,
       }}
     >
       {children}
