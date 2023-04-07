@@ -20,6 +20,7 @@ export const Form = () => {
     yearsList,
     handleGetVehicleData,
     loading,
+    loadingFipeData,
     handleGetFipeData,
     handleClearVehicleData,
   } = useContext(FipeContext);
@@ -74,7 +75,12 @@ export const Form = () => {
           required
           loading={loading}
         />
-        <S.SubmitButton type='submit' variant='contained' disabled={!isValid || !isDirty}>
+        <S.SubmitButton
+          type='submit'
+          variant='contained'
+          disabled={!isValid || !isDirty}
+          loading={loadingFipeData}
+        >
           Consultar preço
         </S.SubmitButton>
       </form>
