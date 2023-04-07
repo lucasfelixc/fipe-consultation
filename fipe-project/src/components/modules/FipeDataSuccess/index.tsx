@@ -7,8 +7,8 @@ export const FipeDataSuccess = () => {
   const { fipeData, handleClearFipeData } = useContext(FipeContext);
 
   return (
-    <S.Container>
-      <h2>
+    <S.Container data-testid='fipe-data-success-content'>
+      <h2 data-testid='title-result'>
         Tabela Fipe: Preço {fipeData?.Marca} {fipeData?.Modelo} {fipeData?.AnoModelo}
       </h2>
       <S.PriceFlag>{fipeData?.Valor}</S.PriceFlag>

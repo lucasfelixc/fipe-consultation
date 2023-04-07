@@ -1,4 +1,4 @@
-import { fireEvent, render, renderHook, screen, within } from '@testing-library/react';
+import { fireEvent, render, renderHook } from '@testing-library/react';
 import { Control, useForm } from 'react-hook-form';
 import '@testing-library/jest-dom';
 import { WrapperTheme } from '@/utils/test';
@@ -13,7 +13,7 @@ const mockData = [
 
 const { result } = renderHook(() => useForm());
 
-describe('<Close />', () => {
+describe('<TextFieldAutoComplete />', () => {
   test('Should render', () => {
     const { getByTestId } = WrapperTheme(
       render,
