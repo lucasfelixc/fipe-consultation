@@ -48,8 +48,8 @@ export const Form = () => {
   };
 
   return (
-    <S.Container>
-      <form onSubmit={handleSubmit((data) => onSubmit(data))}>
+    <S.Container data-testid='form-content'>
+      <form data-testid='form' onSubmit={handleSubmit((data) => onSubmit(data))}>
         <TextFieldAutoComplete
           control={control}
           rules={{ required: true }}
@@ -82,6 +82,7 @@ export const Form = () => {
           />
         )}
         <S.SubmitButton
+          data-testid='submit-button'
           type='submit'
           variant='contained'
           disabled={!isValid || !isDirty}

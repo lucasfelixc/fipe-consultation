@@ -38,7 +38,7 @@ export const TextFieldAutoComplete = ({
   loading,
 }: Props) => {
   return (
-    <S.Container>
+    <S.Container data-testid='text-field-content'>
       <Controller
         name={name}
         control={control}
@@ -49,6 +49,7 @@ export const TextFieldAutoComplete = ({
             value={field.value || null}
             onChange={(e, value) => field.onChange(value)}
             id='text-field-auto-complete'
+            data-testid={`field-auto-complete-${name}`}
             sx={{ width: '100%' }}
             options={data}
             autoHighlight
@@ -65,6 +66,7 @@ export const TextFieldAutoComplete = ({
             renderInput={(params) => (
               <TextField
                 {...params}
+                data-testid='text-field-auto-complete'
                 required={required}
                 label={label}
                 inputProps={{
