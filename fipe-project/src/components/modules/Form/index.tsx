@@ -11,6 +11,7 @@ export const Form = () => {
     handleSubmit,
     getValues,
     control,
+    watch,
     formState: { isDirty, isValid },
     resetField,
   } = useForm<Inputs>();
@@ -24,6 +25,9 @@ export const Form = () => {
     handleGetFipeData,
     handleClearVehicleData,
   } = useContext(FipeContext);
+
+  const brandingSelected = watch('branding');
+  const modelSelected = watch('model');
 
   const handleBlurBrandingField = () => {
     resetField('model');
@@ -61,20 +65,22 @@ export const Form = () => {
           name='model'
           data={modelList}
           label='Modelo'
-          disabled={!modelList.length}
+          disabled={!brandingSelected}
           required
           loading={loading}
         />
-        <TextFieldAutoComplete
-          control={control}
-          rules={{ required: true }}
-          name='year'
-          data={yearsList}
-          label='Ano'
-          disabled={!yearsList.length}
-          required
-          loading={loading}
-        />
+        {!!modelSelected && (
+          <TextFieldAutoComplete
+            control={control}
+            rules={{ required: true }}
+            name='year'
+            data={yearsList}
+            label='Ano'
+            disabled={!yearsList.length}
+            required
+            loading={loading}
+          />
+        )}
         <S.SubmitButton
           type='submit'
           variant='contained'
