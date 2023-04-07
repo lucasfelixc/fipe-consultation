@@ -20,6 +20,12 @@ export const Container = styled.div`
       font-weight: ${theme.font.weights.semiBold};
       color: ${theme.colors.grayScale02};
     }
+
+    @media (min-width: 720px) {
+      max-width: 40rem;
+
+      padding-inline: ${theme.spacings.medium};
+    }
   `}
 `;
 
@@ -44,6 +50,12 @@ export const SubmitButton = styled(Button)`
   ${({ theme }) => css`
     width: 100%;
 
+    background-color: ${theme.colors.success} !important;
+
     margin-top: ${theme.spacings.xsmall};
+
+    @media (min-width: 720px) {
+      max-width: 20rem;
+    }
   `}
 `;

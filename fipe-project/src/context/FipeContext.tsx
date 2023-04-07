@@ -10,6 +10,7 @@ interface FipeContextData {
   handleGetVehicleData: (brandingId: string) => void;
   handleGetFipeData: (brandingId: string, modelId: string, year: string) => void;
   loading: boolean;
+  loadingFipeData: boolean;
   fipeData: FipeData | null;
   handleClearFipeData: () => void;
   handleClearVehicleData: () => void;
@@ -25,8 +26,9 @@ export function FipeProvider({ children }: FipeProviderProps) {
   const [brandingList, setBrandingList] = useState<VehicleData[]>([]);
   const [modelList, setModelList] = useState<VehicleData[]>([]);
   const [yearsList, setYearsList] = useState<VehicleData[]>([]);
-  const [loading, setLoading] = useState(false);
   const [fipeData, setFipeData] = useState<FipeData | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [loadingFipeData, setLoadingFipeData] = useState(false);
 
   const handleGetVehicleData = async (brandingId: string) => {
     setLoading(true);
@@ -41,6 +43,7 @@ export function FipeProvider({ children }: FipeProviderProps) {
   };
 
   const handleGetFipeData = async (brandingId: string, modelId: string, year: string) => {
+    setLoadingFipeData(true);
     const fipeData = await getFipeData({ brandingId, modelId, year });
 
     if (fipeData.status === 200 && fipeData.data) {
@@ -48,6 +51,7 @@ export function FipeProvider({ children }: FipeProviderProps) {
     } else {
       Toast('Houve algum problema na busca dos dados, tente novamente.', 'error');
     }
+    setLoadingFipeData(false);
   };
 
   const handleClearFipeData = () => setFipeData(null);
@@ -67,6 +71,7 @@ export function FipeProvider({ children }: FipeProviderProps) {
         handleGetVehicleData,
         handleGetFipeData,
         loading,
+        loadingFipeData,
         fipeData,
         handleClearFipeData,
         handleClearVehicleData,

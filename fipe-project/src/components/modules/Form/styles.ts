@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 export const Container = styled.div`
   ${({ theme }) => css`
@@ -18,13 +18,25 @@ export const Container = styled.div`
       align-items: center;
       gap: 1rem;
     }
+
+    @media (min-width: 720px) {
+      max-width: 40rem;
+
+      padding-inline: ${theme.spacings.medium};
+    }
   `}
 `;
 
-export const SubmitButton = styled(Button)`
+export const SubmitButton = styled(LoadingButton)`
   ${({ theme }) => css`
     width: 100%;
+    text-transform: none !important;
 
     margin-top: ${theme.spacings.xsmall};
+
+    @media (min-width: 720px) {
+      max-width: 20rem;
+      height: 3rem;
+    }
   `}
 `;
