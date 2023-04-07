@@ -13,6 +13,12 @@ const config = {
     '@/utils/(.*)$': '<rootDir>/src/utils/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/context/(.*)$',
+    '<rootDir>/src/services/(.*)$',
+    '<rootDir>/src/styles/(.*)$',
+    '<rootDir>/src/utils/(.*)$',
+  ],
 };
 
 export default createJestConfig(config);
