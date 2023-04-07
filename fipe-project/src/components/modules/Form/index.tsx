@@ -19,11 +19,13 @@ export const Form = () => {
     brandingList,
     modelList,
     yearsList,
-    handleGetVehicleData,
     loading,
     loadingFipeData,
     handleGetFipeData,
     handleClearVehicleData,
+    handleGetModelData,
+    handleGetYearData,
+    handleClearYearData,
   } = useContext(FipeContext);
 
   const brandingSelected = watch('branding');
@@ -37,7 +39,19 @@ export const Form = () => {
     const brandingFieldValue = getValues('branding');
 
     if (brandingFieldValue) {
-      handleGetVehicleData(brandingFieldValue.codigo);
+      handleGetModelData(brandingFieldValue.codigo);
+    }
+  };
+
+  const handleBlurModelField = () => {
+    resetField('year');
+    handleClearYearData();
+
+    const brandingFieldValue = getValues('branding');
+    const modelFieldValue = getValues('model');
+
+    if (brandingFieldValue && modelFieldValue) {
+      handleGetYearData(brandingFieldValue.codigo, modelFieldValue.codigo);
     }
   };
 
@@ -66,6 +80,7 @@ export const Form = () => {
           data={modelList}
           label='Modelo'
           disabled={!brandingSelected}
+          handleBlur={handleBlurModelField}
           required
           loading={loading}
         />
@@ -76,7 +91,7 @@ export const Form = () => {
             name='year'
             data={yearsList}
             label='Ano'
-            disabled={!yearsList.length}
+            disabled={!modelSelected}
             required
             loading={loading}
           />

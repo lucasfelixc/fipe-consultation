@@ -24,7 +24,8 @@ const mockContext = {
     { codigo: '12', nome: 'name test 12' },
   ],
   setBrandingList: () => null,
-  handleGetVehicleData: (code: string) => alert(code),
+  handleGetModelData: (brandingId: string) => alert(brandingId),
+  handleGetYearData: (brandingId: string, modelId: string) => alert(`${brandingId}, ${modelId}`),
   handleGetFipeData: (brandingCode: string, modelCode: string, yearCode: string) =>
     console.log(`${brandingCode}, ${modelCode}, ${yearCode}`),
   loading: false,
@@ -32,6 +33,7 @@ const mockContext = {
   fipeData: null,
   handleClearFipeData: () => null,
   handleClearVehicleData: () => null,
+  handleClearYearData: () => null,
 };
 
 describe('<Form />', () => {
