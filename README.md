@@ -28,13 +28,15 @@ O projeto possui quatro exercícios, sendo eles:
 
 1. Maskify:
 ```sh
-  Função que tem o objetivo de mascarar dados parcialmente, mantendo visível apenas os últimos 4 caracteres.
+  Função que tem o objetivo de mascarar dados parcialmente,
+  mantendo visível apenas os últimos 4 caracteres.
   A função recebe o texto por parâmetro e retorna o texto mascarado.
 ```
 2. Update Data:
 ```sh
   Função que tem o objetivo atualizar um objeto com base nos dados de um segundo objeto.
-  A função recece os dois objetos por parâmetro, verifica se no segundo objeto tem chave que o primeiro objeto tem,
+  A função recece os dois objetos por parâmetro, verifica se no segundo objeto
+  tem chave que o primeiro objeto tem,
   e caso tenha, atualiza o dado, e retorna o objeto atualizado.
 ```
 3. Get Rick and Morty characters data:
