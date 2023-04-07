@@ -49,7 +49,7 @@ export const TextFieldAutoComplete = ({
             value={field.value || null}
             onChange={(e, value) => field.onChange(value)}
             id='text-field-auto-complete'
-            data-testid='field-auto-complete'
+            data-testid={`field-auto-complete-${name}`}
             sx={{ width: '100%' }}
             options={data}
             autoHighlight

@@ -40,7 +40,7 @@ describe('<TextFieldAutoComplete />', () => {
       />,
     );
 
-    const autoComplete = getByTestId('field-auto-complete');
+    const autoComplete = getByTestId('field-auto-complete-branding');
     const input = container.querySelector('input');
 
     if (input) {

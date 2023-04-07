@@ -16,7 +16,7 @@ export const HomeTemplate = ({ brandingList }: Props) => {
   }, [brandingList]);
 
   return (
-    <S.Container success={!!fipeData}>
+    <S.Container success={!!fipeData} data-testid='home-template-content'>
       {fipeData ? (
         <FipeDataSuccess />
       ) : (
